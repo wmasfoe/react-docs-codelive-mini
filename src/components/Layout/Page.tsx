@@ -5,7 +5,7 @@ import {TocContext} from '../MDX/TocContext';
 import type {TocItem} from '../MDX/TocContext';
 import cn from 'classnames';
 
-import(/* webpackPrefetch: true */ '../MDX/CodeBlock/CodeBlock');
+// import(/* webpackPrefetch: true */ '../MDX/CodeBlock/CodeBlock');
 
 interface PageProps {
   children: React.ReactNode;
