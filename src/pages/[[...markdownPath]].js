@@ -3,40 +3,19 @@
  */
 
 import {Fragment, useMemo} from 'react';
-import {useRouter} from 'next/router';
 import {MDXComponents} from '../components/MDX/MDXComponents';
 import {Page} from '../components/Layout/Page';
 
-export default function Layout({content, toc, meta}) {
+export default function Layout({ content }) {
   const parsedContent = useMemo(
     () => JSON.parse(content, reviveNodeOnClient),
     [content]
   );
-  const parsedToc = useMemo(() => JSON.parse(toc, reviveNodeOnClient), [toc]);
-  const section = useActiveSection();
   return (
-    <Page toc={parsedToc} meta={meta} section={section}>
+    <Page>
       {parsedContent}
     </Page>
   );
-}
-
-function useActiveSection() {
-  const {asPath} = useRouter();
-  const cleanedPath = asPath.split(/[\?\#]/)[0];
-  if (cleanedPath === '/') {
-    return 'home';
-  } else if (cleanedPath.startsWith('/reference')) {
-    return 'reference';
-  } else if (asPath.startsWith('/learn')) {
-    return 'learn';
-  } else if (asPath.startsWith('/community')) {
-    return 'community';
-  } else if (asPath.startsWith('/blog')) {
-    return 'blog';
-  } else {
-    return 'unknown';
-  }
 }
 
 // Deserialize a client React tree from JSON.

@@ -7,8 +7,6 @@ import {AppProps} from 'next/app';
 import {useRouter} from 'next/router';
 import {ga} from '../utils/analytics';
 
-import '@docsearch/css';
-import '../styles/algolia.css';
 import '../styles/index.css';
 import '../styles/sandpack.css';
 
